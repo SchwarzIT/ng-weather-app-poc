@@ -1,9 +1,0 @@
-<div *ngIf="currentCities$ | async as currentCities">
-<scu-anchor-group *ngFor="let city of currentCities">
-  <scu-anchor class="city-entry" text="{{city.name | uppercase}} {{city.temperature}}" element="h1"></scu-anchor>
-</scu-anchor-group>
-<div class="new-city">
-  <scu-input #input id="city" placeholder="City and temperature"></scu-input>
-  <scu-button id="add-button" text="Add" variant="default" color="primary" (click)="addCity()"></scu-button>
-</div>
-</div>

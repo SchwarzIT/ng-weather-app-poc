@@ -1,7 +1,7 @@
-import {IsNumber, IsPositive, IsString, MaxLength} from "class-validator";
+import {IsNumber, IsPositive, IsString, MaxLength} from 'class-validator';
 
 export class City {
-  @IsNumber()
+  @IsString()
   id: string;
   @IsString()
   @MaxLength(92)

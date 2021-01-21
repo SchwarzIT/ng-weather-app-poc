@@ -1,6 +1,6 @@
 import {IsNumber, IsString, MaxLength} from 'class-validator';
 
-export class Country {
+export class Landmark {
   @IsString()
   id: string;
   @IsString()
@@ -8,5 +8,5 @@ export class Country {
   name: string;
   @IsString()
   @MaxLength(46)
-  iso: string;
+  country: string;
 }

@@ -1,10 +1,10 @@
-import {HttpClient} from "@angular/common/http";
-import {Injectable} from "@angular/core";
-import {Observable} from "rxjs";
-import {Country} from "../models/country.model";
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {Country} from '../models/country.model';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class CountryService {
   BASE_URL = `http://localhost:8082/api/countries`;

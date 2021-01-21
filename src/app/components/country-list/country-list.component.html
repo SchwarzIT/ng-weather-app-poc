@@ -1,6 +1,6 @@
 <div *ngIf="currentCountries$ | async as countries">
   <scu-anchor-group *ngFor="let country of countries">
     <scu-anchor class="country-entity" text="{{country.name | uppercase}}" element="h1"
-                (click)="goToCityList(country.iso)"></scu-anchor>
+                (click)="goToCountryExtension(country.iso)"></scu-anchor>
   </scu-anchor-group>
 </div>
