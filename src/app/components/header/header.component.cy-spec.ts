@@ -1,11 +1,11 @@
-import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
-import {RouterLink} from "@angular/router";
-import {RouterTestingModule} from "@angular/router/testing";
-import {initEnv, mount} from "cypress-angular-unit-test";
-import {AuthService} from "../../services/auth.service";
-import {HeaderComponent} from "./header.component";
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {RouterLink} from '@angular/router';
+import {RouterTestingModule} from '@angular/router/testing';
+import {initEnv, mount} from 'cypress-angular-unit-test';
+import {AuthService} from '../../services/auth.service';
+import {HeaderComponent} from './header.component';
 
-describe("HeaderComponent Unit Tests", () => {
+describe('HeaderComponent Unit Tests', () => {
   beforeEach(() => {
     initEnv(HeaderComponent, {
       imports: [RouterTestingModule],
@@ -14,14 +14,14 @@ describe("HeaderComponent Unit Tests", () => {
     });
   });
 
-  it("should create", () => {
+  it('should create', () => {
     const fixture = mount(HeaderComponent);
     fixture.detectChanges();
   });
 
-  it("shows the title on the left corner on the top", () => {
-    mount(HeaderComponent, {title: "Angular Weather App"});
+  it('shows the title on the left corner on the top', () => {
+    mount(HeaderComponent, {title: 'Angular Weather App'});
 
-    cy.contains("Angular Weather App");
+    cy.contains('Angular Weather App');
   });
 });

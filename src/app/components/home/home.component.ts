@@ -1,13 +1,13 @@
-import {Component, OnInit} from "@angular/core";
-import {AuthService} from "../../services/auth.service";
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
-  selector: "app-home",
-  templateUrl: "./home.component.html",
-  styleUrls: ["./home.component.scss"]
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  title = "Angular Weather App";
+  title = 'Angular Weather App';
 
   constructor(public auth: AuthService) {
   }

@@ -1,0 +1,14 @@
+<div class="custom-extension">
+  <scu-reveal has-indicator open="false">
+    <scu-headline slot="header" element="h3">{{extensionType}}</scu-headline>
+    <scu-container slot="content">
+      <scu-anchor-group *ngFor="let item of extension">
+        <scu-anchor class="item-content" text="{{item.name}} {{item.temperature}}" element="h1"></scu-anchor>
+      </scu-anchor-group>
+      <div class="new-item">
+        <scu-input [(ngModel)]="input" id="item" placeholder="Add new one..."></scu-input>
+        <scu-button id="add-button" text="Add" variant="default" color="primary" (click)="addItem()"></scu-button>
+      </div>
+    </scu-container>
+  </scu-reveal>
+</div>

@@ -1,13 +1,13 @@
-import {Injectable} from "@angular/core";
-import {Router} from "@angular/router";
-import * as auth0 from "auth0-js";
-import {AUTH_CONFIG} from "../../../auth_config";
-import {User} from "../models/user.model";
+import {Injectable} from '@angular/core';
+import {Router} from '@angular/router';
+import * as auth0 from 'auth0-js';
+import {AUTH_CONFIG} from '../../../auth_config';
+import {User} from '../models/user.model';
 
 (window as any).global = window;
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class AuthService {
 
@@ -17,16 +17,16 @@ export class AuthService {
 
   get userProfile(): User {
     return {
-      picture: window.localStorage.getItem("user_picture"),
-      name: window.localStorage.getItem("user_name"),
-      email: window.localStorage.getItem("user_email"),
+      picture: window.localStorage.getItem('user_picture'),
+      name: window.localStorage.getItem('user_name'),
+      email: window.localStorage.getItem('user_email'),
     };
   }
 
   get isLoggedIn(): boolean {
     // Check if current date is before token
     // expiration and user is signed in locally
-    return Date.now() < JSON.parse(window.localStorage.getItem("expires_at"));
+    return Date.now() < JSON.parse(window.localStorage.getItem('expires_at'));
   }
 
   tokenRenewalTimeout: number;
@@ -34,18 +34,18 @@ export class AuthService {
   auth0 = new auth0.WebAuth({
     clientID: AUTH_CONFIG.clientId,
     domain: AUTH_CONFIG.domain,
-    responseType: "token",
+    responseType: 'token',
     redirectUri: AUTH_CONFIG.redirect,
     scope: AUTH_CONFIG.scope
   });
 
   private setSessionToLocalStorage(authResult, profile) {
     // Save authentication data and update login status subject
-    window.localStorage.setItem("user_picture", profile.picture);
-    window.localStorage.setItem("user_name", profile.name);
-    window.localStorage.setItem("user_email", profile.email);
-    window.localStorage.setItem("access_token", authResult.accessToken);
-    window.localStorage.setItem("expires_at", JSON.stringify(
+    window.localStorage.setItem('user_picture', profile.picture);
+    window.localStorage.setItem('user_name', profile.name);
+    window.localStorage.setItem('user_email', profile.email);
+    window.localStorage.setItem('access_token', authResult.accessToken);
+    window.localStorage.setItem('expires_at', JSON.stringify(
       authResult.expiresIn * 1000 + new Date().getTime()
     ));
 
@@ -58,7 +58,7 @@ export class AuthService {
     try {
       this.auth0.authorize();
     } catch (e) {
-      throw new Error("Not authorized!");
+      throw new Error('Not authorized!');
     }
   }
 
@@ -70,12 +70,12 @@ export class AuthService {
       } else if (err) {
         alert(`Error: ${err.error}. Check the console for further details.`);
       }
-      this.router.navigate(["/"]);
+      this.router.navigate(['/']);
     });
   }
 
   private getAccessToken() {
-    if (window.localStorage.getItem("access_token") === null) {
+    if (window.localStorage.getItem('access_token') === null) {
       this.auth0.checkSession({}, (err, authResult) => {
         if (authResult && authResult.accessToken) {
           this.getUserInfo(authResult);
@@ -88,7 +88,7 @@ export class AuthService {
   }
 
   scheduleRenewal() {
-    const expiresAt = JSON.parse(localStorage.getItem("expires_at"));
+    const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     const delay = expiresAt - Date.now();
     if (delay > 0) {
       this.tokenRenewalTimeout = setTimeout(() => {
@@ -119,10 +119,10 @@ export class AuthService {
   }
 
   clearStoredData() {
-    window.localStorage.removeItem("access_token");
-    window.localStorage.removeItem("expires_at");
-    window.localStorage.removeItem("user_picture");
-    window.localStorage.removeItem("user_name");
-    window.localStorage.removeItem("user_email");
+    window.localStorage.removeItem('access_token');
+    window.localStorage.removeItem('expires_at');
+    window.localStorage.removeItem('user_picture');
+    window.localStorage.removeItem('user_name');
+    window.localStorage.removeItem('user_email');
   }
 }

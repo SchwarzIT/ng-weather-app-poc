@@ -84,7 +84,7 @@
     ],
     "quotemark": [
       true,
-      "double"
+      "single"
     ],
     "trailing-comma": false,
     "semicolon": {
