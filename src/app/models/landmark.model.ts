@@ -1,8 +1,9 @@
-import {IsNumber, IsString, MaxLength} from 'class-validator';
+import {IsOptional, IsString, MaxLength} from 'class-validator';
 
 export class Landmark {
   @IsString()
-  id: string;
+  @IsOptional()
+  id?: string;
   @IsString()
   @MaxLength(92)
   name: string;

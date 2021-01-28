@@ -3,6 +3,9 @@ import {IsEmail, IsOptional, IsString, MaxLength} from 'class-validator';
 export class User {
   @IsOptional()
   @IsString()
+  id?: string;
+  @IsOptional()
+  @IsString()
   picture?: string;
   @IsString()
   @MaxLength(92)

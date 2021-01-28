@@ -5,11 +5,18 @@
                         [extensionType]="'CITY'"
                         [iso]="iso"
                         (addCustomItem)="addItem($event)">
+    <ng-template #myCustomContainer>
+      <scu-headline loading-indicator-visible="true" element="h5">This is our national flag!</scu-headline>
+      <scu-flag flag="{{iso}}" size="42"></scu-flag>
+    </ng-template>
   </app-custom-extension>
   <app-custom-extension *ngIf="landmarkItems$ | async as landmarkItems"
                         [extension]="landmarkItems"
                         [extensionType]="'LANDMARK'"
                         [iso]="iso"
                         (addCustomItem)="addItem($event)">
+    <ng-template #myCustomContainer>
+      <img src="assets/dancing.gif">
+    </ng-template>
   </app-custom-extension>
 </div>

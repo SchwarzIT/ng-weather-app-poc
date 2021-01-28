@@ -4,7 +4,7 @@
   margin: 0;
 }
 
-.callback, .user-profile, .home, .new-city, scu-headline, scu-button, scu-input {
+.callback, .user-profile, .home, .new-city, scu-headline, scu-button, scu-input, scu-flag, p {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,6 +13,14 @@
 
 img, #details-headline, #router-button, #add-button {
   margin: 1rem;
+}
+
+img {
+  max-height: 10rem;
+  display: flex;
+  flex-direction: inherit;
+  align-items: center;
+  padding: 2rem;
 }
 
 scu-headline {

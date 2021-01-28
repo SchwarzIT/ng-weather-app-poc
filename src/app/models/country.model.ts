@@ -1,8 +1,9 @@
-import {IsNumber, IsString, MaxLength} from 'class-validator';
+import {IsNumber, IsOptional, IsString, MaxLength} from 'class-validator';
 
 export class Country {
   @IsString()
-  id: string;
+  @IsOptional()
+  id?: string;
   @IsString()
   @MaxLength(92)
   name: string;

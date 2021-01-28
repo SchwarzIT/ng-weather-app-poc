@@ -1,6 +1,5 @@
 import {Component, OnInit, Output} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Guid} from 'guid-typescript';
 import {Observable} from 'rxjs';
 import {City} from '../../models/city.model';
 import {Landmark} from '../../models/landmark.model';
@@ -44,7 +43,6 @@ export class CountryExtensionContainerComponent implements OnInit {
       case 'CITY':
         const inputData = item.split(' ');
         const newCity: City = {
-          id: Guid.create().toString(),
           name: inputData[0],
           temperature: Number(inputData[1]),
           country: this.iso
@@ -59,7 +57,6 @@ export class CountryExtensionContainerComponent implements OnInit {
         break;
       case 'LANDMARK':
         const newLandmark: Landmark = {
-          id: Guid.create().toString(),
           name: item,
           country: this.iso
         };
