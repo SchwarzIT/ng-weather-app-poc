@@ -2,17 +2,20 @@
   <scu-reveal has-indicator open="false">
     <scu-headline slot="header" element="h3">{{extensionType}}</scu-headline>
     <scu-container slot="content">
+
       <scu-anchor-group *ngFor="let item of extension">
         <scu-anchor *ngIf="isCity(item);else singleProperty" class="item-content"
-                    text="{{item.name}} {{item.temperature}}" element="h1"></scu-anchor>
+                    text="{{item.name}}" element="h1"></scu-anchor>
         <ng-template #singleProperty>
           <scu-anchor class="item-content" text="{{item.name}} {{item.temperature}}" element="h1"></scu-anchor>
         </ng-template>
       </scu-anchor-group>
+
       <div class="new-item">
         <scu-input [(ngModel)]="input" id="item" placeholder="Add new one..."></scu-input>
         <scu-button id="add-button" text="Add" variant="default" color="primary" (click)="addItem()"></scu-button>
       </div>
+
       <ng-container *ngTemplateOutlet="tplRef"></ng-container>
     </scu-container>
   </scu-reveal>

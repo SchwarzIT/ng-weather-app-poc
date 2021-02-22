@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
 import {City} from '../../models/city.model';
 import {Landmark} from '../../models/landmark.model';
+import {AuthService} from '../../services/auth.service';
 import {CityService} from '../../services/city.service';
 import {LandmarkService} from '../../services/landmark.service';
 
@@ -15,12 +16,15 @@ export class CountryExtensionContainerComponent implements OnInit {
   @Output() iso: string;
   cityItems$: Observable<any[]>;
   landmarkItems$: Observable<any[]>;
+  username: string;
 
   constructor(private route: ActivatedRoute,
               public cityService: CityService,
-              public landmarkService: LandmarkService) {
+              public landmarkService: LandmarkService,
+              public auth: AuthService) {
 
     this.iso = this.route.snapshot.paramMap.get('iso');
+    this.username = this.auth.userProfile.name.split(' ')[0];
   }
 
   ngOnInit(): void {

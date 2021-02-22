@@ -23,10 +23,6 @@ export class CountryListComponent implements OnInit {
     this.currentCountries$ = this.countryService.getAllCountries();
   }
 
-  goToCityList(iso: string): Promise<boolean> {
-    return this.router.navigate(['/city-list/', iso]);
-  }
-
   goToCountryExtension(iso: string): Promise<boolean> {
     return this.router.navigate(['/country-list/', iso]);
   }
